@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>…</title>
+
+<style>
+  body {
+    margin:0;
+    height:100vh;
+    background:#050505;
+    color:#eaeaea;
+    font-family: "Courier New", monospace;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .box {
+    width:min(520px, 92vw);
+    text-align:center;
+    padding:30px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.03);
+    box-shadow:0 0 40px rgba(255,0,0,.15);
+  }
+  h1 {
+    font-size:22px;
+    margin-bottom:16px;
+    letter-spacing:1px;
+  }
+  p {
+    opacity:.85;
+    margin-bottom:22px;
+    min-height:40px;
+  }
+  button {
+    background:#111;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.2);
+    padding:10px 16px;
+    font-size:14px;
+    cursor:pointer;
+    border-radius:6px;
+  }
+  button:hover {
+    background:#1a1a1a;
+  }
+  .blink {
+    animation: blink 1.2s infinite;
+  }
+  @keyframes blink {
+    0%,100% { opacity:.2 }
+    50% { opacity:1 }
+  }
+</style>
+</head>
+
+<body>
+<div class="box">
+  <h1 id="title">Hello.</h1>
+  <p id="text" class="blink">Loading…</p>
+  <button id="btn" style="display:none;">Continue</button>
+</div>
+
+<script>
+const steps = [
+  "You shouldn’t have opened this.",
+  "Can I ask you something?",
+  "Are you alone right now?",
+  "Don’t worry… this is just between us.",
+  "Do you ever feel like someone is watching you?",
+  "It’s okay. Everyone does.",
+  "I like how you answer without answering.",
+  "You’re doing great.",
+  "Just one last question."
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const btn = document.getElementById("btn");
+
+setTimeout(() => {
+  text.classList.remove("blink");
+  text.innerText = steps[i];
+  btn.style.display = "inline-block";
+}, 2000);
+
+btn.onclick = () => {
+  i++;
+  if (i < steps.length) {
+    text.innerText = steps[i];
+  } else {
+    text.innerHTML = "I already know your answer.";
+    btn.style.display = "none";
+    setTimeout(() => {
+      text.innerHTML = "😈";
+    }, 1200);
+    setTimeout(() => {
+      // CHANGE THIS LINK (TikTok / meme / video)
+      window.location.href = "https://vt.tiktok.com/ZSabkGfRb/";
+    }, 2200);
+  }
+};
+</script>
+</body>
+</html>
